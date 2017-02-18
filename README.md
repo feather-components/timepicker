@@ -7,7 +7,7 @@
 *   dom：在指定元素上绑定选择器，通常为input，如果不指定dom，则选择器会直接显示在container中，不会消失，除非手动调用close
 *   className：选择器额外的类名
 *   selectedClassName: 选中某个时间时的样式
-*   closeAfterSelect：选择后，是否关闭，此参数只有在dom不为空时才会起作用
+*   closeAfterConfirm：确定后，是否关闭，此参数只有在dom不为空时才会起作用
 *   disabled：禁用时间类型列表
 
  
@@ -35,6 +35,8 @@ $('#timepicker').timepicker({
 }).on('timepicker:select', function(event, v, a){
     console.log(v, a);
     console.log($(this).timepicker('instance').getTime());
-})
+}).on('timepicker:confirm', function(event, time){
+    console.log(time);
+});
 </script>
 ```

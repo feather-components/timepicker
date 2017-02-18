@@ -32,6 +32,8 @@ $('#timepicker').timepicker({
     disabled: ['hours']
 }).on('timepicker:select', function(event, v, a){
     console.log(v, a);
+}).on('timepicker:confirm', function(event, v, a){
+    console.log(v, a);
     console.log($(this).timepicker('instance').getTime());
 })
 </script>

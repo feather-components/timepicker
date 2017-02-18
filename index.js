@@ -17,9 +17,11 @@ var TimePicker = Class.$factory('timepicker', Picker, {
     initialize: function(options){
         var options = $.extend({
             disabled: [],
-            selectedClassName: 'ui3-timepicker-si-selected'
+            selectedClassName: 'ui3-timepicker-si-selected',
+            closeAfterConfirm: true
         }, options || {});
 
+        options.closeAfterSelect = false;
         this._super(options);
     },
 
@@ -35,7 +37,7 @@ var TimePicker = Class.$factory('timepicker', Picker, {
             self.$inputs.eq(type).val(val);
 
             type < 2 && self.$inputs.eq(type + 1).click();
-            self.trigger('selectItem', [val, type]);
+            self.trigger('select', [val, type]);
         });
 
         self.$inputs.each(function(index){
@@ -49,7 +51,14 @@ var TimePicker = Class.$factory('timepicker', Picker, {
         });
 
         self.$picker.find('.ui3-timepicker-confirm').click(function(){
-            self.trigger('select', self.getTime());
+            var time = self.getTime();
+
+            self.trigger('confirm', time);
+
+            if(self.$dom){
+                options.closeAfterConfirm && self.close();
+                self.$dom.val(time);
+            }
         });
     },
 
