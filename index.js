@@ -35,7 +35,7 @@ var TimePicker = Class.$factory('timepicker', Picker, {
             self.$inputs.eq(type).val(val);
 
             type < 2 && self.$inputs.eq(type + 1).click();
-            self.trigger('selectItem' + , [val, type]);
+            self.trigger('selectItem', [val, type]);
         });
 
         self.$inputs.each(function(index){
@@ -75,7 +75,7 @@ var TimePicker = Class.$factory('timepicker', Picker, {
 
         var end = type == 0 ? 23: 59;
         var txt, htmls = [];
-        var self = this;
+        var self = this, options = self.options;
         var v = self.getTime(type);
 
         for(var i = 0; i <= end; i++){
