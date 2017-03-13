@@ -49,6 +49,7 @@
 
 .ui3-timepicker-vs input{
     width: 25px;
+    margin: 0px;
     height: 25px;
     display: inline-block;
     line-height: 25px;
